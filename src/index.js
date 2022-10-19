@@ -1,24 +1,46 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Car from './Car';
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+import './App.css';
 
-function Garage () {
-    const cars = [
-        {id: 1, brand: 'Ford'},
-        {id: 2, brand: 'BMW'},
-        {id: 3, brand: 'Audi'}
-    ];
+function FavoriteColor() {
+    const [color, setColor] = useState("red");
+    var [default_style, setDefaultStyle] = useState("title");
 
     return (
         <>
-            <h1>Who lives in my garage?</h1>
-            <ul>
-                {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
-            </ul>
+            <h1 className={default_style}>My favorite color is {color}!</h1>
+            <button
+                type="button"
+                onClick={() => {
+                    setColor("blue");
+                    setDefaultStyle("blue")
+                }}
+            >Blue</button>
+            <button
+                type="button"
+                onClick={() => {
+                    setColor("red");
+                    setDefaultStyle("red")
+                }}
+            >Red</button>
+            <button
+                type="button"
+                onClick={() => {
+                    setColor("pink");
+                    setDefaultStyle("pink")
+                }}
+            >Pink</button>
+            <button
+                type="button"
+                onClick={() => {
+                    setColor("green");
+                    setDefaultStyle("green")
+                }}
+            >Green</button>
+            <button type="button" onClick={() => setDefaultStyle("black")}>Default</button>
         </>
     );
 }
 
-//ReactDOM.createRoot(document.getElementById('root')).render(<Garage />);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Garage />);
+root.render(<FavoriteColor />);
