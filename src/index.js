@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import './App.css';
 
@@ -42,5 +42,46 @@ function FavoriteColor() {
     );
 }
 
+function Timer () {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setCount((count) => count + 1);
+        }, 1000);
+    }, []);
+
+    return <h1>Rendered {count} times!</h1>
+}
+
+function Counter () {
+    const [count, setCount] = useState(0);
+    const [calculation, setCalculation] = useState(0);
+
+    useEffect(() => {
+        setCalculation(() => count*2);
+    }, [count]);
+
+    return (<>
+        <p>Count: {count}</p>
+        <p>Calculation: {calculation}</p>
+        <button onClick={() => setCount((c) => c + 1)}>+</button>
+    </>);
+}
+
+function Timer2 () {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            setCount((count) => count + 1);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    return <h1>Rendered {count} times!</h1>
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<FavoriteColor />);
+root.render(<Counter />);
