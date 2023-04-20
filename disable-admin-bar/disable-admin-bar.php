@@ -5,6 +5,7 @@
      * Version: 1.0
      * Author: Marian M.
      * Author URI: https://www.linkedin.com/in/marian-mircea/
+     * License: GPLv2 or later
      */
 
     // Remove the admin bar from the front end
